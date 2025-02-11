@@ -1,0 +1,9 @@
+## USER IP BANNING
+<Limit GET POST>
+ order allow,deny
+ deny from 42.12.5.34
+ deny from 193.110.145.185
+ deny from 212.173.53.
+ deny from 69.242.
+ allow from all
+</Limit>

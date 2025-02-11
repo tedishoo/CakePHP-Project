@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST}  \.
+RewriteCond %{HTTP_COOKIE} !^.*abayportal.*$ [NC]
+RewriteRule .* / [R,L]
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteRule    ^$ app/webroot/    [L]
+   RewriteRule    (.*) app/webroot/$1 [L]
+</IfModule>
+
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|js|css|swf)$">
+    <IfModule mod_expires.c>
+         ExpiresActive on
+         ExpiresDefault "access plus 30 days"
+    </IfModule>
+    Header unset ETag
+    FileETag None
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/x-javascript  application/rss+xml application/atom_xml text/javascript
+</IfModule>
